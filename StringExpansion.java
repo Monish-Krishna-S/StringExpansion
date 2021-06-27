@@ -21,19 +21,19 @@ public class StringExpansion {
         char[] A = input.toCharArray();
         for(int i=0; i<len; i++){
             int times,a;
-            if((A[i]>='a'&&A[i]<='z')||(A[i]>='A'&&A[i]<='Z')){
-                if((i!=len-1)&&(A[i+1]!='0')) System.out.print(A[i]+" ");
-                else if(i==0&&len==1) System.out.print(A[i]);
-                else if(i==len-1) System.out.print(A[i]);
-            }else{
+            if((A[i]>='a'&&A[i]<='z')||(A[i]>='A'&&A[i]<='Z')){  //----->(0)
+                if((i!=len-1)&&(A[i+1]!='0')) System.out.print(A[i]+" ");//checking for zero time and printing
+                else if(i==0&&len==1) System.out.print(A[i]); //if only one letter is given as input
+                else if(i==len-1) System.out.print(A[i]); //if last letter doesn't has number along with it
+            }else{                                        //checking for numbers
                 times = (int)A[i] - '0';
                 char t0 = A[i-1]; 
-                for(;i<len-1 && !(A[i+1] >= 'a' && A[i+1] <= 'z');){
+                for(;i<len-1 && !(A[i+1] >= 'a' && A[i+1] <= 'z');){  //calculating the number of times a letter has to print
                   a = (int)A[i+1] - '0';
                   times = times*10 + a;
                   i = i+1;
                 }
-                for(int x=0; x<times-1;x++){
+                for(int x=0; x<times-1;x++){//printing n-1 times because we already print letters at (0)
                   System.out.print(t0+" ");
                 }
             }
